@@ -13,6 +13,14 @@ export default props => {
         stylesButton.push(styles.qrcodeScan)
         stylesLabel.push(styles.labelQrcodeScan)
     }
+    if(props.buttonEdit){
+        stylesButton.push(styles.buttonEdit)
+        stylesLabel.push(styles.labelButtonEdit)
+    }
+    if(props.buttonLogout){
+        stylesButton.push(styles.buttonLogout)
+        stylesLabel.push(styles.labelLogout)
+    }
 
     return(
         <TouchableOpacity style={stylesButton} onPress={() => props.onClick()}>
@@ -47,6 +55,27 @@ const styles = StyleSheet.create({
     },
     labelQrcodeScan:{
         color: '#fff'
+    },
+    buttonEdit:{
+        backgroundColor: '#0496FF',
+        paddingHorizontal: 20,
+        paddingVertical:5,
+        borderColor: '#0496FF',
+        marginHorizontal: 5,
+    },
+    labelButtonEdit:{
+        color: '#fff',
+        fontSize:15
+    },
+    buttonLogout:{
+        backgroundColor: '#fff',
+        paddingHorizontal: 15,
+        paddingVertical:5,
+        borderColor: '#0496FF'
+    },
+    labelLogout:{
+        color: '#0496FF',
+        fontSize:15
     },
     
 })

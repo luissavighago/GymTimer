@@ -30,7 +30,7 @@ export default props =>{
                         <TextInput style={styles.input} value={nameField} onChangeText={txt => {setNameField(txt)}}/>
                         <Text style={styles.label}>Qual o seu email?</Text>
                         <TextInput style={styles.input} value={emailField} onChangeText={txt => {setEmailField(txt)}}/>
-                        <Button signbutton title="avancar" onClick={avancar}/>
+                        <Button signbutton title="Avancar" onClick={avancar}/>
                     </View>
                     <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}} 
                     onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
@@ -47,7 +47,7 @@ export default props =>{
                         <TextInput style={styles.input} value={phoneField} onChangeText={txt => {setPhoneFieldField(txt)}}/>
                         <Text style={styles.label}>Data de nascimento?</Text>
                         <TextInput style={styles.input} value={nascField} onChangeText={txt => {setNascField(txt)}}/>
-                        <Button signbutton title="avancar" onClick={avancar}/>
+                        <Button signbutton title="Avancar" onClick={avancar}/>
                     </View>
                     <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}} 
                     onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
