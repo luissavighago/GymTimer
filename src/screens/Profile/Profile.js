@@ -55,8 +55,10 @@ export default props => {
                         <TextInput style={styles.input} value={emailField} onChangeText={txt => {setEmailField(txt)}}/>
                         <Text style={styles.label}>Telefone</Text>
                         <TextInput style={styles.input} value={phoneField} onChangeText={txt => {setPhoneFieldField(txt)}}/>
-                        <Button buttonCancel title="Cancelar" onClick={cancel} />
-                        <Button buttonSave title="Salvar" onClick={save}/>
+                        <View style={styles.containerButtons2}>
+                            <Button buttonCancel title="Cancelar" onClick={cancel} />
+                            <Button buttonSave title="Salvar" onClick={save}/>
+                        </View>
                     </ScrollView>
                 </View>
             }

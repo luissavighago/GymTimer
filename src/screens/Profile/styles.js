@@ -18,7 +18,7 @@ export default StyleSheet.create({
         marginTop: 40,
         borderColor: '#fff',
         borderWidth: 2,
-        borderRadius: 100, 
+        borderRadius: 100,
         padding: 50,
         backgroundColor:'#fff'
     },
@@ -37,7 +37,6 @@ export default StyleSheet.create({
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
         paddingVertical: 50,
-        
     },
     containerButtons:{
         width: Dimensions.get('window').width,
@@ -58,4 +57,8 @@ export default StyleSheet.create({
         width:'100%',
         height:40,
     },
+    containerButtons2:{
+        flexDirection: "row",
+        display:"flex"
+    }
 })
