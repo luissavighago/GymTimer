@@ -7,6 +7,7 @@ import { CheckBox } from 'react-native-elements/dist/checkbox/CheckBox';
 export default props =>{
 
     const [current, setCurrent] = useState(0)
+    const [showTerms, setShowTerms] = useState(false)
     const [nameField, setNameField] = useState('')
     const [emailField, setEmailField] = useState('')
     const [phoneField, setPhoneFieldField] = useState('')
@@ -20,6 +21,10 @@ export default props =>{
     }
     const cadastrar = () => {
         props.navigation.navigate('SignIn')
+    }
+
+    const changeShowTerms = () => {
+        setShowTerms(!showTerms)
     }
 
     if(current == 0){
@@ -58,41 +63,44 @@ export default props =>{
         );
     }else if (current == 2){
         return (
-            <View style={styles.container}>
-                <Image source={require('../../assets/images/agachamento.png')} style={styles.image} />
-                <View style={styles.containerForms}>
-                    <View  style={{alignItems: 'center'}}>
-                        <Text style={styles.label}>Digite sua senha</Text>
-                        <TextInput secureTextEntry={true} style={styles.input} value={passwordField} onChangeText={txt => {setPasswordField(txt)}}/>
-                        <Text style={styles.label}>Confirme sua senha</Text>
-                        <TextInput secureTextEntry={true} style={styles.input} value={passwordConfirmField} onChangeText={txt => {setPasswordConfirmField(txt)}}/>
-                        <View style={styles.checkboxContainer}>
-                            <CheckBox style={styles.checkbox} onValueChange={setSelection} />
-                            <Text style={styles.txtcheck}
-                            onPress={avancar}>Eu li & aceito com os termos e condições</Text>
+            <>
+            { !showTerms ?
+               
+                <View style={styles.container}>
+                    <Image source={require('../../assets/images/agachamento.png')} style={styles.image} />
+                    <View style={styles.containerForms}>
+                        <View  style={{alignItems: 'center'}}>
+                            <Text style={styles.label}>Digite sua senha</Text>
+                            <TextInput secureTextEntry={true} style={styles.input} value={passwordField} onChangeText={txt => {setPasswordField(txt)}}/>
+                            <Text style={styles.label}>Confirme sua senha</Text>
+                            <TextInput secureTextEntry={true} style={styles.input} value={passwordConfirmField} onChangeText={txt => {setPasswordConfirmField(txt)}}/>
+                            <View style={styles.checkboxContainer}>
+                                <CheckBox style={styles.checkbox} onValueChange={setSelection} />
+                                <Text style={styles.txtcheck}
+                                onPress={changeShowTerms}>Eu li & aceito com os termos e condições</Text>
+                            </View>
+                            <Button signbutton title="Cadastrar" onClick={cadastrar}/>
                         </View>
-                        <Button signbutton title="Cadastrar" onClick={cadastrar}/>
+                        <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}}
+                        onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
                     </View>
-                    <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}}
-                    onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
                 </View>
-            </View>
-        );
-    }else{
-        return (
-            <View style={styles.containerTermos}>
-                <Text style={{color: '#0496FF',fontSize: 22,padding:20,alignContent:'center'}}
-                    onPress={() => props.navigation.goBack()}>Voltar</Text>
-                <ScrollView style={{margin:10}}>
-                    <View>
-                        <Text style={styles.label2titulo}>Termos e condições</Text>
-                        <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
-                        <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
-                        <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
-                        <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
-                    </View>
-                </ScrollView>
-            </View>
+                :
+                <View style={styles.containerTermos}>
+                    <Text style={{color: '#0496FF',fontSize: 22,padding:20,alignContent:'center'}}
+                        onPress={changeShowTerms}>Voltar</Text>
+                    <ScrollView style={{margin:10}}>
+                        <View>
+                            <Text style={styles.label2titulo}>Termos e condições</Text>
+                            <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
+                            <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
+                            <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
+                            <Text style={styles.label2}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</Text>
+                        </View>
+                    </ScrollView>
+                </View>
+            }
+            </>
         );
     }
 }

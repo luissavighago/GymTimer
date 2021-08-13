@@ -7,34 +7,41 @@ export default StyleSheet.create({
         width: Dimensions.get('window').width,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#fff',
+        backgroundColor: '#0496FF',
     },
     imageContainer:{
         alignItems: 'center',
     },
     image: {
-        width: (Dimensions.get('window').width)/3,
-        height: (Dimensions.get('window').width)/3,
+        width: (Dimensions.get('window').width)/2.5,
+        height: (Dimensions.get('window').width)/2.5,
         marginTop: 40,
-        borderColor: '#0496FF',
+        borderColor: '#fff',
         borderWidth: 2,
         borderRadius: 100, 
         padding: 50,
+        backgroundColor:'#fff'
     },
     title: {
-        fontSize: 20,
-        paddingTop: 15,
+        fontSize: 25,
+        paddingVertical: 15,
         textAlign: 'center',
+        color:'#fff'
     },
     containerOptions: {
-        justifyContent:"flex-start",
-        alignItems: 'center'
+        flexGrow: 1,
+        justifyContent:"center",
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        width: Dimensions.get('window').width,
+        borderTopStartRadius: 50,
+        borderTopEndRadius: 50,
+        paddingVertical: 50,
+        
     },
     containerButtons:{
-        width: Dimensions.get('window').width/ 1.3,
-        marginVertical: 30,
-        flexDirection: 'row',
-        justifyContent: 'center',
+        width: Dimensions.get('window').width,
+        justifyContent: 'space-around',
     },
     containerForm:{
         width: Dimensions.get('window').width/ 1.5,
@@ -50,8 +57,5 @@ export default StyleSheet.create({
         paddingHorizontal: 15,
         width:'100%',
         height:40,
-    },
-    label:{
-
     },
 })

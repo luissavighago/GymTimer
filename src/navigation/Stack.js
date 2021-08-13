@@ -8,7 +8,7 @@ import Tab from './Tab'
 const Stack = createStackNavigator()
 
 export default props => (
-    <Stack.Navigator initialRouteName='Preload' screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName='Tab' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Preload" component={Preload}/>
         <Stack.Screen name="SignIn" component={SignIn}/>
         <Stack.Screen name="SignUp" component={SignUp}/>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -13,18 +14,30 @@ export default props => {
         stylesButton.push(styles.qrcodeScan)
         stylesLabel.push(styles.labelQrcodeScan)
     }
-    if(props.buttonEdit){
-        stylesButton.push(styles.buttonEdit)
-        stylesLabel.push(styles.labelButtonEdit)
+    if(props.buttonProfile){
+        stylesButton.push(styles.buttonProfile)
+        stylesLabel.push(styles.labelButtonProfile)
     }
-    if(props.buttonLogout){
-        stylesButton.push(styles.buttonLogout)
-        stylesLabel.push(styles.labelLogout)
+    if(props.buttonSave){
+        stylesButton.push(styles.buttonSave)
+        stylesLabel.push(styles.labelSave)
+    }
+    if(props.buttonCancel){
+        stylesButton.push(styles.buttonCancel)
+        stylesLabel.push(styles.labelCancel)
     }
 
     return(
         <TouchableOpacity style={stylesButton} onPress={() => props.onClick()}>
-            <Text style={stylesLabel}>{props.title}</Text>
+            <Text style={stylesLabel}>
+                {
+                    props.icon != null ?
+                    <Ionicons name={props.icon.name} size={props.icon.size} color={props.icon.color} />
+                    :
+                    null
+                }
+                {props.title}
+            </Text>
         </TouchableOpacity>
     );
 }
@@ -56,24 +69,36 @@ const styles = StyleSheet.create({
     labelQrcodeScan:{
         color: '#fff'
     },
-    buttonEdit:{
+    buttonProfile:{
+        backgroundColor: '#E0E0E0',
+        borderColor: '#666666',
+        marginHorizontal: 5,
+        height: 60,
+        justifyContent: 'center',
+        marginBottom: 5
+    },
+    labelButtonProfile:{
+        color: '#000',
+        fontSize:20
+    },
+    buttonSave:{
         backgroundColor: '#0496FF',
         paddingHorizontal: 20,
         paddingVertical:5,
         borderColor: '#0496FF',
         marginHorizontal: 5,
     },
-    labelButtonEdit:{
+    labelSave:{
         color: '#fff',
         fontSize:15
     },
-    buttonLogout:{
+    buttonCancel:{
         backgroundColor: '#fff',
         paddingHorizontal: 15,
         paddingVertical:5,
         borderColor: '#0496FF'
     },
-    labelLogout:{
+    labelCancel:{
         color: '#0496FF',
         fontSize:15
     },
