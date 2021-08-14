@@ -18,6 +18,10 @@ export default props => {
         stylesButton.push(styles.buttonProfile)
         stylesLabel.push(styles.labelButtonProfile)
     }
+    if(props.buttonAgendar){
+        stylesButton.push(styles.buttonAgendar)
+        stylesLabel.push(styles.labelAgendar)
+    }
     if(props.buttonSave){
         stylesButton.push(styles.buttonSave)
         stylesLabel.push(styles.labelSave)
@@ -102,5 +106,15 @@ const styles = StyleSheet.create({
         color: '#0496FF',
         fontSize:15
     },
-    
+    buttonAgendar:{
+        backgroundColor: '#fff',
+        paddingHorizontal: 5,
+        paddingVertical:5,
+        borderColor: '#fff',
+        marginTop: 10
+    },
+    labelAgendar:{
+        color: '#0496FF',
+        fontSize:12
+    },
 })
