@@ -1,7 +1,12 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 
 export default StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
     map: {
         flex: 1,
         position: 'absolute',
@@ -11,4 +16,11 @@ export default StyleSheet.create({
         bottom: 0,
         ...StyleSheet.absoluteFillObject,
     },
+    containerAbaixo:{
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor:'#fff',
+        width: Dimensions.get('window').width,
+        justifyContent: 'space-around',
+    }
 })
