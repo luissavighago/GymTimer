@@ -8,11 +8,6 @@ export default StyleSheet.create({
         justifyContent: 'flex-end',
         backgroundColor: '#fff',
     },
-    containerTermos:{
-        flexGrow: 1,
-        width: Dimensions.get('window').width,
-        backgroundColor: '#fff',
-    },
     containerForms: {
         width: Dimensions.get('window').width,
         backgroundColor: '#0496FF',
@@ -41,26 +36,5 @@ export default StyleSheet.create({
         borderWidth: 1,
         marginBottom:10,
         borderColor: '#fff',
-    },
-    checkboxContainer: {
-        flexDirection: "row",
-        alignContent:"center",
-        display:"flex",
-        alignItems:"center",
-    },
-    checkbox: {
-        alignSelf: "center",
-    },
-    txtcheck:{
-        color: "#fff"
-    },
-    label2titulo:{
-        fontSize: 24,
-        paddingBottom:10
-    },
-    label2:{
-        fontSize: 18,
-        color: "#000",
-        paddingBottom: 5,
-    },
+    }
 })
