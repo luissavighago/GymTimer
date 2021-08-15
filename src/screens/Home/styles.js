@@ -8,6 +8,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         backgroundColor: '#fff',
+        padding: 20
     },
     title: {
         fontSize: 30,
@@ -23,6 +24,11 @@ export default StyleSheet.create({
         display: 'flex',
         width: (Dimensions.get('window').width)/3,
         height: (Dimensions.get('window').width)/3,
+    },
+    gif: {
+        display: 'flex',
+        width: (Dimensions.get('window').width)/2,
+        height: (Dimensions.get('window').width)/2,
     },
     historyList:{
         width: Dimensions.get('window').width/ 1.3,

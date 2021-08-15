@@ -25,6 +25,7 @@ export default props => {
         
     }
     const atividades = () => {
+        props.navigation.navigate('Activities')
     }
 
     return (
