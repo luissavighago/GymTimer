@@ -87,24 +87,28 @@ const styles = StyleSheet.create({
     },
     buttonSave:{
         backgroundColor: '#0496FF',
-        paddingHorizontal: 20,
-        paddingVertical:5,
+        height: 40,
+        width: '100%',
         borderColor: '#0496FF',
-        marginHorizontal: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 5,
     },
     labelSave:{
         color: '#fff',
-        fontSize:15
+        fontSize:20
     },
     buttonCancel:{
         backgroundColor: '#fff',
-        paddingHorizontal: 15,
-        paddingVertical:5,
-        borderColor: '#0496FF'
+        height: 40,
+        width: '100%',
+        borderColor: '#0496FF',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     labelCancel:{
         color: '#0496FF',
-        fontSize:15
+        fontSize:20
     },
     buttonAgendar:{
         backgroundColor: '#fff',

@@ -4,6 +4,7 @@ import SignIn  from '../screens/SignIn/SignIn'
 import SignUp  from '../screens/SignUp/SignUp'
 import Preload  from '../screens/Preload/Preload'
 import Tab from './Tab'
+import ProfileEdit  from '../screens/Profile/ProfileEdit'
 
 const Stack = createStackNavigator()
 
@@ -13,5 +14,7 @@ export default props => (
         <Stack.Screen name="SignIn" component={SignIn}/>
         <Stack.Screen name="SignUp" component={SignUp}/>
         <Stack.Screen name="Tab" component={Tab}/>
+        <Stack.Screen name="ProfileEdit" options={{headerShown:true, headerTitle:'Editar Perfil',headerStyle:{backgroundColor: '#0496FF'},
+            headerTintColor: '#fff',headerTitleStyle:{fontWeight: 'bold'}}}  component={ProfileEdit}/>
     </Stack.Navigator>
 )

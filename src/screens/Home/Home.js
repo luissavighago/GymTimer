@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Image, FlatList, PermissionsAndroid, Button } from 'react-native';
+import { View, Text, Image, FlatList, PermissionsAndroid } from 'react-native';
+import Button from '../../components/Button';
 import styles from './styles'
 import dataDB from '../../dataDB';
 
@@ -33,7 +34,7 @@ export default props => {
             <View style={styles.containerImage}>
                 <Image source={require('../../assets/images/qrcode.png')} style={styles.image} />
             </View>
-            <Button title="Escanear QR Code" onPress={escanear}/>
+            <Button qrcodeScan title="Escanear QR Code" onClick={escanear}/>
             { gym.length > 0 ?
                 <View style={styles.historyList}>
                     <Text style={styles.historyTitle}>Histórico</Text>

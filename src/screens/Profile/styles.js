@@ -30,7 +30,7 @@ export default StyleSheet.create({
     },
     containerOptions: {
         flexGrow: 1,
-        justifyContent:"center",
+        justifyContent:'flex-start',
         alignItems: 'center',
         backgroundColor: '#fff',
         width: Dimensions.get('window').width,
@@ -41,6 +41,7 @@ export default StyleSheet.create({
     containerButtons:{
         width: Dimensions.get('window').width,
         justifyContent: 'space-around',
+        alignItems: 'center'
     },
     containerForm:{
         width: Dimensions.get('window').width/ 1.5,

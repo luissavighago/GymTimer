@@ -27,10 +27,8 @@ export default props => {
 const styles = StyleSheet.create({
     button:{
         height: 50,
-        width: Dimensions.get('window').width,
+        width: Dimensions.get('window').width/1.2,
         justifyContent: 'center',
-        /* backgroundColor: '#E0E0E0', */
-        marginHorizontal: 5,
     },
     container:{
         flexDirection: 'row',
