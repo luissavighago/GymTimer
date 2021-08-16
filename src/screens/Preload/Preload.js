@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Image, GifImage } from 'react-native';
-import gif from '../../assets/images/loading.gif'
+import { View, StyleSheet, Image } from 'react-native';
+import gif from '../../assets/images/loading.gif';
 
 export default props => {
 
