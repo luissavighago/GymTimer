@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, FlatList, PermissionsAndroid } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 import Button from '../../components/Button';
 import styles from './styles'
 import dataDB from '../../dataDB';
@@ -9,7 +10,7 @@ import dumbell from '../../assets/images/dumbell.json'
 const users = dataDB.users
 const gym = dataDB.gym
 
-const escanear = async () => {
+/* const getPermission = async () => {
     const granted = await PermissionsAndroid.request(
     PermissionsAndroid.PERMISSIONS.CAMERA,
     {
@@ -25,7 +26,7 @@ const escanear = async () => {
     } else {
         alert('Permissão de Câmera negada');
     }
-};
+}; */
 
 export default props => {
 
@@ -33,6 +34,7 @@ export default props => {
 
     const start = () => {
         setTraining(!isTraining)
+        props.navigation.navigate('Camera')
     }
 
     if(!isTraining) {
