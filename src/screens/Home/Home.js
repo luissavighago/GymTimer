@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, FlatList, PermissionsAndroid } from 'react-native';
-import { RNCamera } from 'react-native-camera';
+import {RNCamera as Camera} from 'react-native-camera';
 import Button from '../../components/Button';
 import styles from './styles'
 import dataDB from '../../dataDB';
@@ -62,7 +62,7 @@ export default props => {
                     null
                 }
             </View>
-        ); 
+        );
     }else{
         return(
             <View style={styles.container}>
@@ -75,5 +75,4 @@ export default props => {
             </View>
         );
     }
-    
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList} from 'react-native';
-import { ListItem } from 'react-native-elements';
+import ListItem from 'react-native-elements';
 import dataDB from '../../dataDB';
 
 const gym = dataDB.gym
@@ -20,11 +20,11 @@ export default props => {
     }
 
     return (
-      <View style={styles.container}>
-          <FlatList data={gym} keyExtractor={i => `${i._id}`}
-            renderItem={getActivitiesItem}
-          />
-      </View>
+        <View style={styles.container}>
+            <FlatList data={gym} keyExtractor={i => `${i._id}`}
+                renderItem={getActivitiesItem}
+            />
+        </View>
     );
 }
 

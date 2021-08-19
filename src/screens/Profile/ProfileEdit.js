@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
-import {TextInputMask} from 'react-native-masked-text';
+import TextInputMask from 'react-native-masked-text';
 import Button from '../../components/Button';
 
 export default props => {

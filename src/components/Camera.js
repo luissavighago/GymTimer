@@ -1,54 +1,88 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
-import { RNCamera } from 'react-native-camera';
-import QRCodeScanner from 'react-native-qrcode-scanner';
+import React, { Component } from "react";
+import {
+    View,
+    Text,
+    Linking,
+    Dimensions,
+    StyleSheet,
+} from "react-native";
+import WebView from "react-native-webview";
 
-export default props =>{
+import QRCodeScanner from "react-native-qrcode-scanner";
+import ModalWebView from './ModalWebView'
 
-    onSuccess = e => {
-        Linking.openURL(e.data).catch(err =>
-            console.error('An error occured', err)
-        );
+export default class QRCodeScreen extends Component {
+
+    state = {
+        modalVisible: false,
+        success: null,
+        url: '',
     };
 
-    return (
-        <QRCodeScanner
-            onRead={onSuccess}
-            flashMode={RNCamera.Constants.FlashMode.torch}
-            fadeIn
-            topContent={
-            <Text style={styles.centerText}>
-                Go to{' '}
-                <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on
-                your computer and scan the QR code.
-            </Text>
-        }
-        bottomContent={
-          <TouchableOpacity style={styles.buttonTouchable}>
-            <Text style={styles.buttonText}>OK. Got it!</Text>
-          </TouchableOpacity>
-        }
-        />
-
+    openLink = () => {
+    Linking.openURL(this.state.url).catch(err =>
+        alert("An error occured", err)
     );
-}
-const styles = StyleSheet.create({
-    centerText: {
-      flex: 1,
-      fontSize: 18,
-      padding: 32,
-      color: '#777'
-    },
-    textBold: {
-      fontWeight: '500',
-      color: '#000'
-    },
-    buttonText: {
-      fontSize: 21,
-      color: 'rgb(0,122,255)'
-    },
-    buttonTouchable: {
-      padding: 16
+    this.setState({ success: false })
+    };
+
+    handleButton = () => {
+        this.setState({ modalVisible: !this.state.modalVisible, success: false })
+        this.scanner.reactivate()
     }
-  });
-  
+
+    onSuccess = async (e) => {
+        await this.setState({ success: true, modalVisible: true, url: e.data });
+    };
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <QRCodeScanner
+                    onRead={this.onSuccess}
+                    showMarker={true}
+                    checkAndroid6Permissions={true}
+                    ref={(elem) => { this.scanner = elem }}
+                    cameraStyle={styles.cameraContainer}
+                    bottomContent={
+                    <View style={styles.touchable}>
+                        {this.state.success && (
+                        <Text style={styles.text}>OK. Got it!</Text>
+                        )}
+                    </View>
+                    }
+                />
+
+                <ModalWebView
+                handleButton={this.handleButton}
+                modalVisible={this.state.modalVisible}
+                url={this.state.url}
+                openLink={this.openLink}
+                />
+
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "black"
+    },
+
+    touchable: {
+    padding: 16
+    },
+
+    text: {
+    fontSize: 21,
+    color: "rgb(0,122,255)"
+    },
+
+    cameraContainer: {
+    height: Dimensions.get('window').height,
+    }
+
+});

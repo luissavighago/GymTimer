@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, Image, TextInput, ScrollView } from 'react-native';
 import styles from './styles'
 import Button from '../../components/Button';
-import {TextInputMask} from 'react-native-masked-text';
+import TextInputMask from 'react-native-masked-text';
 
 export default props =>{
 
