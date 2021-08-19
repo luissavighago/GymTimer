@@ -7,11 +7,13 @@ import Tab from './Tab'
 import ProfileEdit  from '../screens/Profile/ProfileEdit'
 import Activities from '../screens/Profile/Activities'
 import Camera from '../components/Camera'
+import ModalWebView from '../components/ModalWebView'
 
 const Stack = createStackNavigator()
 
 export default props => (
     <Stack.Navigator initialRouteName='Preload' screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="ModalWebView" component={ModalWebView}/>
         <Stack.Screen name="Camera" component={Camera}/>
         <Stack.Screen name="Preload" component={Preload}/>
         <Stack.Screen name="SignIn" component={SignIn}/>
