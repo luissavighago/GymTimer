@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import {
     View,
-    WebView,
-    Text,
     Linking,
     Dimensions,
     StyleSheet,
@@ -33,6 +31,10 @@ export default class QRCodeScreen extends Component {
     onSuccess = async (e) => {
         await this.setState({ success: true, modalVisible: true, url: e.data });
     };
+
+    home = () => {
+        this.props.navigation.navigate('Home')
+    }
 
     render() {
         return (
