@@ -52,8 +52,8 @@ const ModalWebView = props => (
 
 ModalWebView.propTypes = {
     modalVisible: PropTypes.bool.isRequired,
-    url: PropTypes.string.isRequired,
-    openLink: PropTypes.func.isRequired,
+    url: PropTypes.string,
+    openLink: PropTypes.func,
     handleButton: PropTypes.func.isRequired,
 }
 
