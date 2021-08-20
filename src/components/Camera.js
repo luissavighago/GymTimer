@@ -17,13 +17,6 @@ export default class QRCodeScreen extends Component {
         url: '',
     };
 
-    openLink = () => {
-        Linking.openURL(this.state.url).catch(err =>
-        alert("An error occured", err)
-        );
-        this.setState({ success: false })
-    };
-
     handleButton = () => {
         this.setState({ modalVisible: !this.state.modalVisible, success: false })
     }
@@ -49,8 +42,6 @@ export default class QRCodeScreen extends Component {
             <ModalWebView
                 handleButton={this.handleButton}
                 modalVisible={this.state.modalVisible}
-                url={this.state.url}
-                openLink={this.openLink}
             />
 
         </View>

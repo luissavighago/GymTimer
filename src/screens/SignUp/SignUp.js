@@ -3,6 +3,7 @@ import { View, Text, Image, TextInput, ScrollView } from 'react-native';
 import styles from './styles'
 import Button from '../../components/Button';
 import TextInputMask from 'react-native-masked-text';
+import {server, showError, showSuccess} from './'
 
 export default props =>{
 
@@ -14,10 +15,10 @@ export default props =>{
     const [passwordField, setPasswordField] = useState('')
     const [passwordConfirmField, setPasswordConfirmField] = useState('')
 
-    const avancar = () => {
+    const next = () => {
         setCurrent(current + 1)
     }
-    const cadastrar = () => {
+    const register = () => {
         props.navigation.navigate('SignIn')
     }
 
@@ -31,7 +32,7 @@ export default props =>{
                         <TextInput style={styles.input} value={nameField} onChangeText={txt => {setNameField(txt)}}/>
                         <Text style={styles.label}>Qual o seu email?</Text>
                         <TextInput style={styles.input} value={emailField} onChangeText={txt => {setEmailField(txt)}}/>
-                        <Button signbutton title="Avancar" onClick={avancar}/>
+                        <Button signbutton title="Avancar" onClick={next}/>
                     </View>
                     <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}}
                     onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
@@ -48,7 +49,7 @@ export default props =>{
                         <TextInputMask type={'cel-phone'} options={{maskType: 'BRL', withDDD: true, dddMask: '(99) '}} style={styles.input} value={phoneField} onChangeText={txt => setPhoneFieldField(txt)}/>
                         <Text style={styles.label}>Data de nascimento?</Text>
                         <TextInputMask type={'datetime'} options={{format: 'DD/MM/YYYY'}} style={styles.input} value={nascField} onChangeText={txt => {setNascField(txt)}}/>
-                        <Button signbutton title="Avancar" onClick={avancar}/>
+                        <Button signbutton title="Avancar" onClick={next}/>
                     </View>
                     <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}}
                     onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
@@ -65,7 +66,7 @@ export default props =>{
                         <TextInput secureTextEntry={true} style={styles.input} value={passwordField} onChangeText={txt => {setPasswordField(txt)}}/>
                         <Text style={styles.label}>Confirme sua senha</Text>
                         <TextInput secureTextEntry={true} style={styles.input} value={passwordConfirmField} onChangeText={txt => {setPasswordConfirmField(txt)}}/>
-                        <Button signbutton title="Cadastrar" onClick={cadastrar}/>
+                        <Button signbutton title="Cadastrar" onClick={register}/>
                     </View>
                     <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}}
                     onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>
