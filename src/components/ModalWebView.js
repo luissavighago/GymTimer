@@ -23,7 +23,6 @@ const ModalWebView = props => (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <WebView
                 automaticallyAdjustContentInsets={false}
-                source={{ uri: props.url }}
                 javaScriptEnabled={true}
                 domStorageEnabled={true}
                 startInLoadingState={true}
