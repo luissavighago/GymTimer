@@ -1,10 +1,14 @@
 import axios from "axios";
+import AsyncStorage from "@react-native-community/async-storage"
+
+const server = 'http://localhost:8000/api'
 
 const api = axios.create({
     headers: {
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     },
-    baseURL: process.env.API_URL,
+    baseURL: server,
 });
 
 api.interceptors.response.use(
@@ -12,10 +16,10 @@ api.interceptors.response.use(
         return response;
     },
     async function (error) {
-        const access_token = localStorage.getItem("access_token");
+        const access_token = await AsyncStorage.getItem("token");
             if (error.response.status === 401 && access_token) {
                 const response = await refreshToken(error);
-            return response;
+                return response;
             }
         return Promise.reject(error);
     }
@@ -24,27 +28,27 @@ api.interceptors.response.use(
 async function refreshToken(error) {
     return new Promise((resolve, reject) => {
         try {
-            const refresh_token = localStorage.getItem("refresh_token");
+            const refresh_token = AsyncStorage.getItem("record");
             const header = {
                 "Content-Type": "application/json",
-                Authorization: process.env.AUTHORIZATION,
+                "Access-Control-Allow-Origin": "*"
             };
             const parameters = {
                 method: "POST",
                 headers: header,
             };
             const body = {
-                grant_type: "refresh_token",
+                typeRecord: "typeRecord",
                 refresh_token,
             };
             axios.post(
-                process.env.API_URL + "/refreshtoken",
+                server + "/auth",
                 body,
                 parameters
             )
             .then(async (res) => {
-                localStorage.setItem("access_token", res.data.access_token);
-                localStorage.setItem("refresh_token", res.data.refresh_token);
+                AsyncStorage.setItem("token", res.data.token);
+                AsyncStorage.setItem("record", res.data.record);
             // Fazer algo caso seja feito o refresh token
                 return resolve(res);
             })
