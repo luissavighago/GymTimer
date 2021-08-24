@@ -32,19 +32,18 @@ export default class QRCodeScreen extends Component {
     onSuccess = async (e) => {
         await this.setState({ success: true, modalVisible: true, url: e.data });
         console.log(this.state.url)
-
-        if(this.state.url != ''){
-            const res = await axios.get(`${server}/gym/getById/${this.state.url}`)
-            axios.defaults.headers.common['Authorization'] = `Bearer ${res.headers.token}`
-            console.log('Pegando url: ', res)
-            this.setState({ nomeFantasiaGym:res.data.fantasyName, telefoneGym:res.data.phoneNumber, emailGym:res.data.email })
-        }
     };
 
     componentDidMount = () => {
-        this.onSuccess()
+        this.load()
     }
 
+    load = async () => {
+        const res = await axios.get(`${server}/gym/getById/${this.state.url}`)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.headers.token}`
+        console.log('Pegando url: ', res)
+        this.setState({ nomeFantasiaGym:res.data.fantasyName, telefoneGym:res.data.phoneNumber, emailGym:res.data.email })
+    }
     render() {
         return (
         <View style={styles.container}>
