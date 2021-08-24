@@ -34,6 +34,9 @@ const ModalWebView = props => (
                     <Lottie style={styles.gif} source={dumbell} autoPlay={true} loop/>
                 </View>
                 <Text>{props.url}</Text>
+                <Text>{props.nomeFantasiaGym}</Text>
+                <Text>{props.telefoneGym}</Text>
+                <Text>{props.emailGym}</Text>
                 <TouchableOpacity style={{
                     padding: 15,
                     width: Dimensions.get('window').width/2,
@@ -54,6 +57,9 @@ ModalWebView.propTypes = {
     url: PropTypes.string,
     openLink: PropTypes.func,
     handleButton: PropTypes.func.isRequired,
+    nomeFantasiaGym: PropTypes.string,
+    telefoneGym: PropTypes.string,
+    emailGym: PropTypes.string,
 }
 
 export default ModalWebView;
