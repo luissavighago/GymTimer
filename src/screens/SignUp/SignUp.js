@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { View, Text, Image, TextInput, ScrollView } from 'react-native';
+import { View, Text, Image, TextInput, Alert } from 'react-native';
 import styles from './styles'
 import Button from '../../components/Button';
-import TextInputMask from 'react-native-masked-text';
-import {server, showError, showSuccess} from './'
+import { TextInputMask } from 'react-native-masked-text';
+import { server, showError, showSuccess } from '../../connections/api'
+import axios from 'axios'
 
 export default props =>{
 
@@ -16,10 +17,65 @@ export default props =>{
     const [passwordConfirmField, setPasswordConfirmField] = useState('')
 
     const next = () => {
-        setCurrent(current + 1)
+
+        var msg = ''
+
+        if(current == 0){
+            if(nameField.trim() === '' || emailField.trim() === '') {
+                msg = 'Preencha todos os campos!'
+            }else if(!isEmail()){
+                msg = 'Email inválido'
+            }
+        }else if(current == 1){
+
+            if(phoneField.trim() === '' || nascField.trim() === '') {
+                msg = 'Preencha todos os campos!'
+            }
+
+        }else{
+            if(passwordField.trim() === '' || passwordConfirmField.trim() === '') {
+                msg = 'Preencha todos os campos!'
+            }else if(passwordField !== passwordConfirmField){
+                msg = 'As senhas são divergentes'
+            }
+        }
+
+        if(msg != ""){
+            Alert.alert('Cadastro', msg,[{text: 'Ok'}])
+        }else{
+            if(current < 2){
+                setCurrent(current + 1)
+            }else{signUp()}
+        }
+            
     }
-    const register = () => {
+
+    signUp = async () => {
+
+        try{
+            await axios.post(`${server}/auth/registerUser`, {
+                birth: "2001-02-10",
+                name: {  
+                    first: nameField,
+                    last: ""
+                },
+                phoneNumber : '46984024204',
+                email: emailField,
+                password: passwordField,
+                isAdmin: false
+            })
+
+            showSuccess('Usuario cadastrado!')
+            
+        }catch(e){
+            showError(e)
+        }
+
         props.navigation.navigate('SignIn')
+    }
+    
+    function isEmail(){
+        if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailField)){return true}else{return false}
     }
 
     if(current == 0){
@@ -66,7 +122,7 @@ export default props =>{
                         <TextInput secureTextEntry={true} style={styles.input} value={passwordField} onChangeText={txt => {setPasswordField(txt)}}/>
                         <Text style={styles.label}>Confirme sua senha</Text>
                         <TextInput secureTextEntry={true} style={styles.input} value={passwordConfirmField} onChangeText={txt => {setPasswordConfirmField(txt)}}/>
-                        <Button signbutton title="Cadastrar" onClick={register}/>
+                        <Button signbutton title="Cadastrar" onClick={next}/>
                     </View>
                     <Text style={{color: '#fff',fontSize: 15, paddingTop: 10, textAlign: 'center'}}
                     onPress={() => props.navigation.goBack()}>Já possui uma conta</Text>

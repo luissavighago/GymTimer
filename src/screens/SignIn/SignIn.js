@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import { View, Text, Image, TextInput } from 'react-native';
+import { View, Text, Image, TextInput, Alert} from 'react-native';
 import styles from './styles'
 import Button from '../../components/Button';
+import { server, showError } from '../../connections/api'
+import axios from 'axios'
 
 
 export default props =>{
@@ -10,7 +12,26 @@ export default props =>{
     const [passwordField, setPasswordField] = useState('')
 
     const entrar = () => {
-        props.navigation.navigate('Tab')
+
+        if(emailField.trim() === '' || passwordField.trim() === ''){
+            Alert.alert('Cadastro', 'Preencha todos os campos!',[{text: 'Ok'}])
+        }else{
+            signIn()
+        }
+    }
+
+    signIn = async () => {
+        try{
+            const res = await axios.post(`${server}/auth/login`, {
+                email: emailField,
+                password: passwordField
+            })
+
+            axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`
+            props.navigation.navigate('Tab')
+        }catch(e){
+            showError(e)
+        }
     }
 
     return (

@@ -1,46 +1,63 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import { View, Text, Image, Alert} from 'react-native';
 import styles from './styles'
 import Button from '../../components/Button';
 import dataDB from '../../dataDB';
 import ButtomProfile from '../../components/ButtonProfile';
+import { server, showError, showSuccess } from '../../connections/api'
+import axios from 'axios'
 
-const user = dataDB.users[0]
+export default class Profile extends Component {
 
-export default props => {
+    state = {
+        user: null
+    }  
 
-    const editar = () => {
+    load = async () => {
+        const res = await axios.get(`${server}/user/me`)
+
+        console.warn(res.data.user.name.first)
+
+        setUser(res.data.user)
+    }
+
+    editar = () => {
         props.navigation.navigate('ProfileEdit', user)
     }
-    const sair = () => {
+
+    sair = () => {
         Alert.alert('Finalizar sessão', 'Deseja finalizar a sessão?',[
             {
                 text: 'Sim',
                 onPress: () => props.navigation.navigate('SignIn')
             },
             {
-               text: 'Não' 
+                text: 'Não' 
             }
-        ])
-        
-    }
-    const atividades = () => {
-        props.navigation.navigate('Activities')
+        ]) 
     }
 
-    return (
-        <View style={styles.container}>
-            <View style={styles.imageContainer}>
-                <Image source={require('../../assets/images/user2.png')} style={styles.image} />
-                <Text style={styles.title}>{user.name}</Text>
-            </View>
-            <View style={styles.containerOptions}>
-                <View style={styles.containerButtons}>
+    atividades = () => {
+        //props.navigation.navigate('Activities')
+        load()
+    }
+
+    render(){
+       return (
+            <View style={styles.container}>
+                <View style={styles.imageContainer}>
+                    <Image source={require('../../assets/images/user2.png')} style={styles.image} />
+                    <Text style={styles.title}>{/* {user.name.first} */}</Text>
+                </View>
+                <View style={styles.containerOptions}>
+                    <View style={styles.containerButtons}>
                     <ButtomProfile style={styles.container} icon={{name:"barbell",size:20, color:"#000"}} title="Atividades" onClick={atividades}/>
-                    <ButtomProfile style={styles.container} icon={{name:"brush-outline",size:20, color:"#000"}} title="Editar" onClick={editar}/>
-                    <ButtomProfile style={styles.container} icon={{name:"log-out-outline",size:20, color:"#000"}} title="Sair" onClick={sair}/>
+                        <ButtomProfile style={styles.container} icon={{name:"brush-outline",size:20, color:"#000"}} title="Editar" onClick={editar}/>
+                        <ButtomProfile style={styles.container} icon={{name:"log-out-outline",size:20, color:"#000"}} title="Sair" onClick={sair}/>
+                    </View>
                 </View>
             </View>
-        </View>
-    );
+        ); 
+    }
+    
 }
