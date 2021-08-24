@@ -1,46 +1,89 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
+import React, { useState, Component } from 'react';
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
 import TextInputMask from 'react-native-masked-text';
 import Button from '../../components/Button';
+import { server, showError, showSuccess } from '../../connections/api'
+import axios from 'axios'
 
-export default props => {
+export default class ProfileEdit extends Component {
 
-    const user = props.route.params
+    state = {
+        name:'',
+        email:'',
+        phone:'',
+        dtnasc: ''
+    } 
 
-    const [nameField, setNameField] = useState(user.name || '')
-    const [emailField, setEmailField] = useState(user.email || '')
-    const [phoneField, setPhoneFieldField] = useState(user.phone || '')
-    const [nascField, setNascFieldField] = useState(user.dtnasc || '')
-
-    const save = () => {
-        props.navigation.goBack()
+    componentDidMount = () => {
+        this.load()
     }
-    const cancel = () => {
-        setNameField(user.name || '')
-        setEmailField(user.email || '')
-        setPhoneFieldField(user.phone || '')
-        setNascFieldField(user.dtnasc || '')
-        props.navigation.goBack()
+
+    load = async () => {
+        const res = await axios.get(`${server}/user/me`)
+
+        this.setState({name:res.data.user.name.first,email:res.data.user.email,phone:res.data.user.phoneNumber.toString(),dtnasc:res.data.user.birth})
+    }
+
+    update = async () => {
+
+        try{
+            await axios.put(`${server}/user/update`, {
+                birth: this.state.dtnasc,
+                name: {  
+                    first: this.state.name,
+                    last: ""
+                },
+                phoneNumber : this.state.phone,
+                email: this.state.email,
+                isAdmin: false
+            })
+
+            showSuccess('Usuario cadastrado!')
+            this.props.navigation.goBack()
+        }catch(e){
+            showError('Falha ao cadastrar o usuario!')
+        }
+    }
+
+    save = () => {
+
+        if(this.state.name === '' || !this.isEmail() || this.state.phone === ''){
+            Alert.alert('Cadastro', 'Dados inválidos. Verifique!',[{text: 'Ok'}])
+        }else{
+            this.update()
+        }
+    }
+
+    cancel = () => {
+        this.load()
+        this.props.navigation.goBack()
+    }
+
+    isEmail = () => {
+        if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)){return true}else{return false}
     }
   
-    return (
-      <View style={styles.containerForm}>
-        <View>
-            <Text style={styles.label}>Meu nome</Text>
-            <TextInput style={styles.input} onChangeText={name => setNameField(name)} value={nameField}/>
-            <Text style={styles.label}>Meu E-mail</Text>
-            <TextInput style={styles.input} onChangeText={email => setEmailField(email)} value={emailField}/>
-            <Text style={styles.label}>Meu telefone</Text>
-            <TextInputMask type={'cel-phone'} options={{maskType: 'BRL', withDDD: true, dddMask: '(99) '}} style={styles.input} value={phoneField} onChangeText={phone => setPhoneFieldField(phone)}/>
-            <Text style={styles.label}>Data de nascimento</Text>
-            <TextInputMask type={'datetime'} options={{format: 'DD/MM/YYYY'}} style={styles.input} value={nascField} onChangeText={txt => {setNascField(txt)}}/>
-        </View>
-        <View style={styles.containerButtons}>
-            <Button buttonSave title='Salvar' onClick={save}/>
-            <Button buttonCancel title='Cancelar' onClick={cancel}/>
-        </View>
-      </View>
-    );
+    render(){
+        return (
+            <View style={styles.containerForm}>
+                <View>
+                    <Text style={styles.label}>Meu nome</Text>
+                    <TextInput style={styles.input} onChangeText={txt => this.setState({name: txt})} value={this.state.name}/>
+                    <Text style={styles.label}>Meu E-mail</Text>
+                    <TextInput style={styles.input} onChangeText={txt => this.setState({email: txt})} value={this.state.email}/>
+                    <Text style={styles.label}>Meu telefone</Text>
+                    <TextInput style={styles.input} value={this.state.phone} onChangeText={txt => this.setState({phone: txt})}/>
+                    {/* <Text style={styles.label}>Data de nascimento</Text> */}
+                    {/* <TextInputMask type={'datetime'} options={{format: 'DD/MM/YYYY'}} style={styles.input} value={this.state.dtnasc} onChangeText={txt => {this.setState({dtnasc:txt})}}/> */}
+                </View>
+                <View style={styles.containerButtons}>
+                    <Button buttonSave title='Salvar' onClick={this.save}/>
+                    <Button buttonCancel title='Cancelar' onClick={this.cancel}/>
+                </View>
+            </View>
+        );  
+    }
+    
 }
 
 const styles = StyleSheet.create({

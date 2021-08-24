@@ -30,7 +30,7 @@ export default props =>{
             axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`
             props.navigation.navigate('Tab')
         }catch(e){
-            showError(e)
+            showError('Dados inválidos')
         }
     }
 
