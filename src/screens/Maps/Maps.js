@@ -11,10 +11,10 @@ export default props => {
                 style={styles.map}
                 loadingEnabled={true}
                 region={{
-                latitude: -25.7466469,
-                longitude: -53.0564199,
-                latitudeDelta: 0.0020,
-                longitudeDelta: 0.002,
+                latitude: -25.7521094,
+                longitude: -53.0566417,
+                latitudeDelta: 0.010,
+                longitudeDelta: 0.012,
                 }}
             >
                 <MapView.Marker
@@ -26,14 +26,53 @@ export default props => {
                         <Text style={styles.txtCallout1}>Academia Tal</Text>
                         <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
                         <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
-                        <Button buttonAgendar title="Agendar horário" />
+                    </MapView.Callout>
+                </MapView.Marker>
+                <MapView.Marker
+                    coordinate={{latitude: -25.7487849,
+                    longitude: -53.0513077,}}
+                    image={require('../../assets/images/acad.png')}
+                >
+                    <MapView.Callout style={styles.containerCallout}>
+                        <Text style={styles.txtCallout1}>Outra Academia Tal</Text>
+                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                    </MapView.Callout>
+                </MapView.Marker>
+                <MapView.Marker
+                    coordinate={{latitude: -25.7498785,
+                    longitude: -53.0532921}}
+                    image={require('../../assets/images/acad.png')}
+                >
+                    <MapView.Callout style={styles.containerCallout}>
+                        <Text style={styles.txtCallout1}>Mais uma Academia Tal</Text>
+                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                    </MapView.Callout>
+                </MapView.Marker>
+                <MapView.Marker
+                    coordinate={{latitude: -25.7417815,
+                    longitude: -53.060494}}
+                    image={require('../../assets/images/acad.png')}
+                >
+                    <MapView.Callout style={styles.containerCallout}>
+                        <Text style={styles.txtCallout1}>Academia Tal</Text>
+                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                    </MapView.Callout>
+                </MapView.Marker>
+                <MapView.Marker
+                    coordinate={{latitude: -25.7509035,
+                    longitude: -53.0609014}}
+                    image={require('../../assets/images/acad.png')}
+                >
+                    <MapView.Callout style={styles.containerCallout}>
+                        <Text style={styles.txtCallout1}>Outra Academia Tal</Text>
+                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
                     </MapView.Callout>
                 </MapView.Marker>
             </MapView>
-            <View style={styles.containerAbaixo}>
-                <Text style={{fontSize: 22, textAlign:'center',paddingTop:30,}}>Cidade                         Academias disponíveis</Text>
-                <Text style={{fontSize: 18, textAlign:'center',paddingBottom:40,}}>Dois Vizinhos - PR                                     6 academias</Text>
-            </View>
         </View>
     );
 }

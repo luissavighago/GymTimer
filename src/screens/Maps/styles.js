@@ -16,25 +16,16 @@ export default StyleSheet.create({
         bottom: 0,
         ...StyleSheet.absoluteFillObject,
     },
-    containerAbaixo:{
-        position: 'absolute',
-        bottom: 0,
-        backgroundColor:'#fff',
-        width: Dimensions.get('window').width,
-        justifyContent: 'space-around',
-    },
     containerCallout:{
         padding:20,
         margin:0,
-        backgroundColor: '#0496FF',
         borderRadius: 10,
-        borderColor:'#0496FF',
     },
     txtCallout1:{
-        color: '#fff',
+        color: '#000',
         marginBottom: 20
     },
     txtCallout:{
-        color: '#fff',
+        color: '#000',
     },
 })

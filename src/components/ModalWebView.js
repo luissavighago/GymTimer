@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
     Modal
 } from "react-native";
-
 import PropTypes from 'prop-types';
 import WebView from 'react-native-webview'
 import styles from '../screens/Home/styles'
@@ -19,7 +18,7 @@ const gym = dataDB.gym
 const { width, height } = Dimensions.get("window");
 
 const ModalWebView = props => (
-    <Modal animationType="slide" transparent={false} visible={props.modalVisible}>
+    <Modal animationType="slide" transparent={false} visible={props.modalVisible} >
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <WebView
                 automaticallyAdjustContentInsets={false}
@@ -34,6 +33,7 @@ const ModalWebView = props => (
                 <View style={styles.containerImage}>
                     <Lottie style={styles.gif} source={dumbell} autoPlay={true} loop/>
                 </View>
+                <Text>{props.url}</Text>
                 <TouchableOpacity style={{
                     padding: 15,
                     width: Dimensions.get('window').width/2,
@@ -41,7 +41,7 @@ const ModalWebView = props => (
                     marginBottom: 30,
                     borderColor: '#D9EEFC',
                     borderRadius:30,
-                }} onPress={props.home}>
+                }} onPress={props.handleButton}>
                     <Text style={{color: '#fff', textAlign:'center', fontSize:20}}>Finalizar</Text>
                 </TouchableOpacity>
             </View>

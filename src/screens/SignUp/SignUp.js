@@ -47,7 +47,6 @@ export default props =>{
                 setCurrent(current + 1)
             }else{signUp()}
         }
-            
     }
 
     signUp = async () => {
@@ -55,7 +54,7 @@ export default props =>{
         try{
             await axios.post(`${server}/auth/registerUser`, {
                 birth: "2001-02-10",
-                name: {  
+                name: {
                     first: nameField,
                     last: ""
                 },
@@ -66,7 +65,7 @@ export default props =>{
             })
 
             showSuccess('Usuario cadastrado!')
-            
+
         }catch(e){
             showError('Falha ao cadastrar o usuario!')
         }

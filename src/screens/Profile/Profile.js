@@ -14,7 +14,7 @@ export default class Profile extends Component {
         email:'',
         phone:0,
         dtnasc: ''
-    }  
+    }
 
     componentDidMount = () => {
         this.load()
@@ -35,7 +35,7 @@ export default class Profile extends Component {
             dtnasc: this.state.dtnasc,
         }
 
-        alert(user.name)
+        // alert(user.name)
 
         this.props.navigation.navigate('ProfileEdit', user )
     }

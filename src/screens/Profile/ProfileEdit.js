@@ -12,7 +12,7 @@ export default class ProfileEdit extends Component {
         email:'',
         phone:'',
         dtnasc: ''
-    } 
+    }
 
     componentDidMount = () => {
         this.load()
@@ -29,7 +29,7 @@ export default class ProfileEdit extends Component {
         try{
             await axios.put(`${server}/user/update`, {
                 birth: this.state.dtnasc,
-                name: {  
+                name: {
                     first: this.state.name,
                     last: ""
                 },
@@ -62,7 +62,8 @@ export default class ProfileEdit extends Component {
     isEmail = () => {
         if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)){return true}else{return false}
     }
-  
+
+
     render(){
         return (
             <View style={styles.containerForm}>
@@ -81,9 +82,8 @@ export default class ProfileEdit extends Component {
                     <Button buttonCancel title='Cancelar' onClick={this.cancel}/>
                 </View>
             </View>
-        );  
+        );
     }
-    
 }
 
 const styles = StyleSheet.create({

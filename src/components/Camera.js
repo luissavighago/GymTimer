@@ -15,19 +15,21 @@ export default class QRCodeScreen extends Component {
         modalVisible: false,
         success: null,
         url: '',
+        aux: false
     };
 
     handleButton = () => {
         this.setState({ modalVisible: !this.state.modalVisible, success: false })
+        this.scanner.reactivate()
+        if(this.scanner.reactivate()){
+            this.props.navigation.navigate('Home')
+        }
     }
 
     onSuccess = async (e) => {
         await this.setState({ success: true, modalVisible: true, url: e.data });
+        console.log(this.state.url)
     };
-
-    home = () => {
-        this.props.navigation.navigate('Home')
-    }
 
     render() {
         return (
@@ -37,9 +39,11 @@ export default class QRCodeScreen extends Component {
                 showMarker={true}
                 checkAndroid6Permissions={true}
                 cameraStyle={styles.cameraContainer}
+                ref={(elem) => { this.scanner = elem }}
             />
 
             <ModalWebView
+                url={this.state.url}
                 handleButton={this.handleButton}
                 modalVisible={this.state.modalVisible}
             />
