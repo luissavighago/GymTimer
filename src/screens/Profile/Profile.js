@@ -11,7 +11,7 @@ export default class Profile extends Component {
 
     state = {
         user: null
-    }  
+    }
 
     load = async () => {
         const res = await axios.get(`${server}/user/me`)
@@ -32,9 +32,9 @@ export default class Profile extends Component {
                 onPress: () => props.navigation.navigate('SignIn')
             },
             {
-                text: 'Não' 
+                text: 'Não'
             }
-        ]) 
+        ])
     }
 
     atividades = () => {
@@ -43,7 +43,7 @@ export default class Profile extends Component {
     }
 
     render(){
-       return (
+        return (
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image source={require('../../assets/images/user2.png')} style={styles.image} />
@@ -57,7 +57,6 @@ export default class Profile extends Component {
                     </View>
                 </View>
             </View>
-        ); 
+        );
     }
-    
 }
