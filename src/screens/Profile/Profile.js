@@ -10,26 +10,41 @@ import axios from 'axios'
 export default class Profile extends Component {
 
     state = {
-        user: null
+        name:'',
+        email:'',
+        phone:0,
+        dtnasc: ''
+    }  
+
+    componentDidMount = () => {
+        this.load()
     }
 
     load = async () => {
         const res = await axios.get(`${server}/user/me`)
 
-        console.warn(res.data.user.name.first)
-
-        setUser(res.data.user)
+        this.setState({name:res.data.user.name.first,email:res.data.user.email,phone:res.data.user.phoneNumber,dtnasc:res.data.user.birth})
     }
 
     editar = () => {
-        props.navigation.navigate('ProfileEdit', user)
+
+        const user = {
+            name: this.state.name,
+            email: this.state.email,
+            phone: this.state.phone,
+            dtnasc: this.state.dtnasc,
+        }
+
+        alert(user.name)
+
+        this.props.navigation.navigate('ProfileEdit', user )
     }
 
     sair = () => {
         Alert.alert('Finalizar sessão', 'Deseja finalizar a sessão?',[
             {
                 text: 'Sim',
-                onPress: () => props.navigation.navigate('SignIn')
+                onPress: () => this.props.navigation.navigate('SignIn')
             },
             {
                 text: 'Não'
@@ -37,23 +52,17 @@ export default class Profile extends Component {
         ])
     }
 
-    atividades = () => {
-        //props.navigation.navigate('Activities')
-        load()
-    }
-
     render(){
         return (
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image source={require('../../assets/images/user2.png')} style={styles.image} />
-                    <Text style={styles.title}>{/* {user.name.first} */}</Text>
+                    <Text style={styles.title}>{this.state.name || ''}</Text>
                 </View>
                 <View style={styles.containerOptions}>
                     <View style={styles.containerButtons}>
-                    <ButtomProfile style={styles.container} icon={{name:"barbell",size:20, color:"#000"}} title="Atividades" onClick={atividades}/>
-                        <ButtomProfile style={styles.container} icon={{name:"brush-outline",size:20, color:"#000"}} title="Editar" onClick={editar}/>
-                        <ButtomProfile style={styles.container} icon={{name:"log-out-outline",size:20, color:"#000"}} title="Sair" onClick={sair}/>
+                        <ButtomProfile style={styles.container} icon={{name:"brush-outline",size:20, color:"#000"}} title="Editar" onClick={this.editar}/>
+                        <ButtomProfile style={styles.container} icon={{name:"log-out-outline",size:20, color:"#000"}} title="Sair" onClick={this.sair}/>
                     </View>
                 </View>
             </View>

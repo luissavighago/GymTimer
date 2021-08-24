@@ -68,7 +68,7 @@ export default props =>{
             showSuccess('Usuario cadastrado!')
             
         }catch(e){
-            showError(e)
+            showError('Falha ao cadastrar o usuario!')
         }
 
         props.navigation.navigate('SignIn')
@@ -102,7 +102,7 @@ export default props =>{
                 <View style={styles.containerForms}>
                     <View  style={{alignItems: 'center'}}>
                         <Text style={styles.label}>Qual o seu telefone?</Text>
-                        <TextInputMask type={'cel-phone'} options={{maskType: 'BRL', withDDD: true, dddMask: '(99) '}} style={styles.input} value={phoneField} onChangeText={txt => setPhoneFieldField(txt)}/>
+                        <TextInput style={styles.input} value={phoneField} onChangeText={txt => setPhoneFieldField(txt)}/>
                         <Text style={styles.label}>Data de nascimento?</Text>
                         <TextInputMask type={'datetime'} options={{format: 'DD/MM/YYYY'}} style={styles.input} value={nascField} onChangeText={txt => {setNascField(txt)}}/>
                         <Button signbutton title="Avancar" onClick={next}/>
