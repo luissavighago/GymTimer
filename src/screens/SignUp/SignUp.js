@@ -53,12 +53,11 @@ export default props =>{
 
         try{
             await axios.post(`${server}/auth/registerUser`, {
-                birth: "2001-02-10",
                 name: {
                     first: nameField,
                     last: ""
                 },
-                phoneNumber : '46984024204',
+                phoneNumber : phoneField,
                 email: emailField,
                 password: passwordField,
                 isAdmin: false

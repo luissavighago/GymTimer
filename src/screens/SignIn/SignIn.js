@@ -14,7 +14,7 @@ export default props =>{
     const entrar = () => {
 
         if(emailField.trim() === '' || passwordField.trim() === ''){
-            Alert.alert('Cadastro', 'Preencha todos os campos!',[{text: 'Ok'}])
+            Alert.alert('Login', 'Preencha todos os campos!',[{text: 'Ok'}])
         }else{
             signIn()
         }

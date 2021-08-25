@@ -23,9 +23,9 @@ export default props => {
                     image={require('../../assets/images/acad.png')}
                 >
                     <MapView.Callout style={styles.containerCallout}>
-                        <Text style={styles.txtCallout1}>Academia Tal</Text>
-                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
-                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                        <Text style={styles.txtCallout1}>Academia Fit</Text>
+                        <Text style={styles.txtCallout}>Rua xx, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro xx, Dois Vizinhos - PR</Text>
                     </MapView.Callout>
                 </MapView.Marker>
                 <MapView.Marker
@@ -34,9 +34,9 @@ export default props => {
                     image={require('../../assets/images/acad.png')}
                 >
                     <MapView.Callout style={styles.containerCallout}>
-                        <Text style={styles.txtCallout1}>Outra Academia Tal</Text>
-                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
-                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                        <Text style={styles.txtCallout1}>Academia Cross</Text>
+                        <Text style={styles.txtCallout}>Rua xx, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro xx, Dois Vizinhos - PR</Text>
                     </MapView.Callout>
                 </MapView.Marker>
                 <MapView.Marker
@@ -45,9 +45,9 @@ export default props => {
                     image={require('../../assets/images/acad.png')}
                 >
                     <MapView.Callout style={styles.containerCallout}>
-                        <Text style={styles.txtCallout1}>Mais uma Academia Tal</Text>
-                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
-                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                        <Text style={styles.txtCallout1}>Academia Whey</Text>
+                        <Text style={styles.txtCallout}>Rua xx, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro xx, Dois Vizinhos - PR</Text>
                     </MapView.Callout>
                 </MapView.Marker>
                 <MapView.Marker
@@ -56,9 +56,9 @@ export default props => {
                     image={require('../../assets/images/acad.png')}
                 >
                     <MapView.Callout style={styles.containerCallout}>
-                        <Text style={styles.txtCallout1}>Academia Tal</Text>
-                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
-                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                        <Text style={styles.txtCallout1}>Academia DV</Text>
+                        <Text style={styles.txtCallout}>Rua xx, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro xx, Dois Vizinhos - PR</Text>
                     </MapView.Callout>
                 </MapView.Marker>
                 <MapView.Marker
@@ -67,9 +67,9 @@ export default props => {
                     image={require('../../assets/images/acad.png')}
                 >
                     <MapView.Callout style={styles.containerCallout}>
-                        <Text style={styles.txtCallout1}>Outra Academia Tal</Text>
-                        <Text style={styles.txtCallout}>Rua tal, nº xx</Text>
-                        <Text style={styles.txtCallout}>Bairro tal, Dois Vizinhos - PR</Text>
+                        <Text style={styles.txtCallout1}>Academia Super</Text>
+                        <Text style={styles.txtCallout}>Rua xx, nº xx</Text>
+                        <Text style={styles.txtCallout}>Bairro xx, Dois Vizinhos - PR</Text>
                     </MapView.Callout>
                 </MapView.Marker>
             </MapView>

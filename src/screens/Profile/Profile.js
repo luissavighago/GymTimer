@@ -10,6 +10,7 @@ import axios from 'axios'
 export default class Profile extends Component {
 
     state = {
+        id: '',
         name:'',
         email:'',
         phone:0,
@@ -34,8 +35,6 @@ export default class Profile extends Component {
             phone: this.state.phone,
             dtnasc: this.state.dtnasc,
         }
-
-        // alert(user.name)
 
         this.props.navigation.navigate('ProfileEdit', user )
     }

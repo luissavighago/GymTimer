@@ -8,6 +8,7 @@ import axios from 'axios'
 export default class ProfileEdit extends Component {
 
     state = {
+        id: '',
         name:'',
         email:'',
         phone:'',
@@ -21,27 +22,28 @@ export default class ProfileEdit extends Component {
     load = async () => {
         const res = await axios.get(`${server}/user/me`)
 
-        this.setState({name:res.data.user.name.first,email:res.data.user.email,phone:res.data.user.phoneNumber.toString(),dtnasc:res.data.user.birth})
+        this.setState({id:res.data.user._id,name:res.data.user.name.first,email:res.data.user.email,phone:res.data.user.phoneNumber.toString(),dtnasc:res.data.user.birth})
     }
 
     update = async () => {
 
         try{
-            await axios.put(`${server}/user/update`, {
-                birth: this.state.dtnasc,
+            await axios.put(`${server}/user/update`,
+            {
+                _id:this.state.id,
                 name: {
                     first: this.state.name,
                     last: ""
                 },
                 phoneNumber : this.state.phone,
                 email: this.state.email,
-                isAdmin: false
             })
 
-            showSuccess('Usuario cadastrado!')
-            this.props.navigation.goBack()
-        }catch(e){
-            showError('Falha ao cadastrar o usuario!')
+            showSuccess('Dados Atualizados!')
+            load()
+        }catch(E){
+            
+            //showError('Falha ao editar os dados!')
         }
     }
 
