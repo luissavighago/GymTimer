@@ -17,32 +17,25 @@ export default class QRCodeScreen extends Component {
         success: null,
         url: '',
         nomeFantasiaGym: '',
-        telefoneGym: '',
         emailGym: '',
+        telefoneGym: ''
     };
 
     handleButton = () => {
         this.setState({ modalVisible: !this.state.modalVisible, success: false })
-        this.scanner.reactivate()
-        if(this.scanner.reactivate()){
-            this.props.navigation.navigate('Home')
-        }
+        this.props.navigation.navigate('Home')
     }
 
     onSuccess = async (e) => {
         await this.setState({ success: true, modalVisible: true, url: e.data });
         console.log(this.state.url)
+        this.load()
     };
 
-    componentDidMount = () => {
-        this.load()
-    }
-
     load = async () => {
-        const res = await axios.get(`${server}/gym/getById/${this.state.url}`)
-        axios.defaults.headers.common['Authorization'] = `Bearer ${res.headers.token}`
-        console.log('Pegando url: ', res)
-        this.setState({ nomeFantasiaGym:res.data.fantasyName, telefoneGym:res.data.phoneNumber, emailGym:res.data.email })
+        const res = await axios.get(`${server}/gym/getById`,{params:{gymId:this.state.url}})
+        console.log('Pegando url: ', res.data)
+        this.setState({ nomeFantasiaGym:res.data.gym.fantasyName, telefoneGym:res.data.gym.phoneNumber.toString(), emailGym:res.data.gym.email })
     }
     render() {
         return (
@@ -56,11 +49,10 @@ export default class QRCodeScreen extends Component {
             />
 
             <ModalWebView
-                url={this.state.url}
+                handleButton={this.handleButton}
                 nomeFantasiaGym={this.state.nomeFantasiaGym}
                 telefoneGym={this.state.telefoneGym}
                 emailGym={this.state.emailGym}
-                handleButton={this.handleButton}
                 modalVisible={this.state.modalVisible}
                 
             />
