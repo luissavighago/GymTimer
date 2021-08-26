@@ -33,7 +33,7 @@ const ModalWebView = props => (
                 <View style={styles.containerImage}>
                     <Lottie style={styles.gif} source={dumbell} autoPlay={true} loop/>
                 </View>
-                <Text>{props.url}</Text>
+                <Text style={styles.timer}>{props.timer}</Text>
                 <Text>{props.nomeFantasiaGym}</Text>
                 <Text>{props.telefoneGym}</Text>
                 <Text>{props.emailGym}</Text>
@@ -60,6 +60,7 @@ ModalWebView.propTypes = {
     nomeFantasiaGym: PropTypes.string,
     telefoneGym: PropTypes.string,
     emailGym: PropTypes.string,
+    timer: PropTypes.string
 }
 
 export default ModalWebView;

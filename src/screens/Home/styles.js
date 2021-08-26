@@ -48,9 +48,9 @@ export default StyleSheet.create({
     },
     timer:{
         marginTop: -180,
-        color:'#ffffff',
-        fontSize: 90,
-        fontWeight: 'bold',
+        color:'#0496FF',
+        fontSize: 60,
+        fontWeight: 'bold'
     },
     btnArea:{
         flexDirection:'row',
