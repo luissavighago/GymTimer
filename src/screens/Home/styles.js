@@ -17,8 +17,12 @@ export default StyleSheet.create({
     txt:{
         fontSize: 26,
     },
+    txt2:{
+        fontSize: 18,
+        paddingVertical:3,
+    },
     containerImage:{
-        padding:40
+        paddingBottom:40
     },
     image: {
         display: 'flex',
@@ -47,7 +51,7 @@ export default StyleSheet.create({
         fontSize:18
     },
     timer:{
-        marginTop: -180,
+        marginTop: -60,
         color:'#0496FF',
         fontSize: 60,
         fontWeight: 'bold'

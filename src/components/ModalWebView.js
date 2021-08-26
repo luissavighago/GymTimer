@@ -34,14 +34,15 @@ const ModalWebView = props => (
                     <Lottie style={styles.gif} source={dumbell} autoPlay={true} loop/>
                 </View>
                 <Text style={styles.timer}>{props.timer}</Text>
-                <Text>{props.nomeFantasiaGym}</Text>
-                <Text>{props.telefoneGym}</Text>
-                <Text>{props.emailGym}</Text>
+                <Text style={styles.title}>{props.nomeFantasiaGym}</Text>
+                <Text style={{fontSize:26, fontWeight:"bold",color:'#0496FF'}}>Contato</Text>
+                <Text style={styles.txt2}>{props.telefoneGym}</Text>
+                <Text style={styles.txt2}>{props.emailGym}</Text>
                 <TouchableOpacity style={{
                     padding: 15,
                     width: Dimensions.get('window').width/2,
                     backgroundColor: '#0496FF',
-                    marginBottom: 30,
+                    marginTop: 20,
                     borderColor: '#D9EEFC',
                     borderRadius:30,
                 }} onPress={props.handleButton}>
