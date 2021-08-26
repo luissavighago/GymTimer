@@ -1,7 +1,7 @@
 import { Alert, Plataform } from "react-native"
 import axios from 'axios'
 
-const server = 'http://10.10.10.105:8000/api'
+const server = 'http://192.168.3.16:8000/api'
 
 function showError(err) {
     Alert.alert('Erro', `${err}`)

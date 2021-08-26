@@ -45,5 +45,30 @@ export default StyleSheet.create({
     },
     rowsText:{
         fontSize:18
+    },
+    timer:{
+        marginTop: -180,
+        color:'#ffffff',
+        fontSize: 90,
+        fontWeight: 'bold',
+    },
+    btnArea:{
+        flexDirection:'row',
+        marginTop: 70,
+        height: 40,
+    },
+    botao:{
+        flex:1 ,
+        justifyContent:'center',
+        alignItems:'center',
+        backgroundColor: '#ffffff',
+        height: 40,
+        margin: 17,
+        borderRadius: 9
+    },
+    btnTexto:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color:'#00aeef'
     }
 })

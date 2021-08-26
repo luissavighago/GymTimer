@@ -62,8 +62,8 @@ export default class QRCodeScreen extends Component {
                 emailGym={this.state.emailGym}
                 handleButton={this.handleButton}
                 modalVisible={this.state.modalVisible}
+                
             />
-
         </View>
         );
     }
@@ -87,6 +87,13 @@ text: {
 
 cameraContainer: {
     height: Dimensions.get('window').height,
-}
+},
+
+timer:{
+    marginTop: -180,
+    color:'#ffffff',
+    fontSize: 90,
+    fontWeight: 'bold',
+  },
 
 });
